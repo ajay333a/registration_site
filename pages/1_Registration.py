@@ -5,12 +5,12 @@ import os
 import json
 from datetime import datetime
 from email.mime.text import MIMEText
-from dotenv import load_dotenv
 import streamlit as st
 import base64
 
-# Load environment variables
-load_dotenv('vars.env')
+# Load environment variables from Streamlit secrets
+EMAIL_USER = st.secrets["EMAIL_USER"]
+EMAIL_PASS = st.secrets["EMAIL_PASS"]
 
 # Constants
 GUESTS_FILE = 'registered_guests.json'
@@ -69,8 +69,8 @@ def generate_otp(length=6):
 def send_otp_email(receiver_email, otp):
     smtp_server = 'smtp.gmail.com'
     smtp_port = 587
-    sender_email = os.environ.get('EMAIL_USER', '').strip('"')
-    sender_password = os.environ.get('EMAIL_PASS', '').strip('"')
+    sender_email = EMAIL_USER.strip('"')
+    sender_password = EMAIL_PASS.strip('"')
     
     # Validate email credentials
     if not sender_email or not sender_password:
