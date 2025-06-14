@@ -55,22 +55,26 @@ The Moonlanding Event Registration System is a full-featured web application des
    ```
 
 3. Configure environment variables:
-   - Create a `vars.env` file
-   - Add your email credentials:
-     ```
-     EMAIL_USER=your_email@gmail.com
-     EMAIL_PASS=your_app_password
-     ```
+   - For local development:
+     - Create a `.streamlit/secrets.toml` file in your project directory
+     - Add your email credentials:
+       ```toml
+       EMAIL_USER = "your_email@gmail.com"
+       EMAIL_PASS = "your_app_password"
+       ```
+   - For Streamlit Cloud deployment:
+     - Go to your app settings in Streamlit Cloud
+     - Add the same secrets in the "Secrets" section
 
 4. Run the application:
    ```bash
-   streamlit run Home.py
+   streamlit run home.py
    ```
 
 ## Security Features
 
 - **OTP Verification**: Ensures email ownership
-- **Secure Storage**: Sensitive data handling
+- **Secure Storage**: Sensitive data handling through Streamlit secrets
 - **Input Validation**: Prevents malicious input
 - **Session Management**: Secure user sessions
 

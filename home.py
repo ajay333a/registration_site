@@ -110,7 +110,6 @@ def main():
     st.set_page_config(
         page_title="Moonlanding Event",
         page_icon="🚀",
-        layout="wide"
     )
 
     # Initialize session state for registration
